@@ -29,3 +29,5 @@ $result = $conn->query("SELECT matric, name, role FROM users");
 </html>
 
 <?php $conn->close(); ?>
+
+
