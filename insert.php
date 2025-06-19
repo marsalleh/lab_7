@@ -5,27 +5,20 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$result = $conn->query("SELECT matric, name, role FROM users");
+$matric = $_POST['matric'];
+$name = $_POST['name'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$role = $_POST['role'];
+
+$sql = "INSERT INTO users (matric, name, password, role)
+        VALUES ('$matric', '$name', '$password', '$role')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully. <a href='view.php'>View Users</a>";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>View Users</title>
-</head>
-<body>
-    <h2>Users List</h2>
-    <table border="1" cellpadding="10">
-        <tr><th>Matric</th><th>Name</th><th>Role</th></tr>
-        <?php while($row = $result->fetch_assoc()) { ?>
-            <tr>
-                <td><?php echo $row['matric']; ?></td>
-                <td><?php echo $row['name']; ?></td>
-                <td><?php echo $row['role']; ?></td>
-            </tr>
-        <?php } ?>
-    </table>
-</body>
-</html>
-
-<?php $conn->close(); ?>
