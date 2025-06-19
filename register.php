@@ -14,10 +14,11 @@
         <input type="password" name="password" required><br>
         <label>Role:</label><br>
         <select name="role">
+            <option value="">Please select</option>
             <option value="student">Student</option>
             <option value="lecturer">Lecturer</option>
         </select><br><br>
-        <input type="submit" value="Register">
+        <input type="submit" name="submit" value="Register">
     </form>
 </body>
 </html>
