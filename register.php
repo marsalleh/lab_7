@@ -18,7 +18,7 @@
             <option value="student">Student</option>
             <option value="lecturer">Lecturer</option>
         </select><br><br>
-        <input type="submit" name="submit" value="Register">
+         <input type="submit" name="submit" value="Register">
     </form>
 </body>
 </html>
